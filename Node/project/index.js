@@ -1,5 +1,5 @@
-const { odd, even } = require('./var.js');
-const checkNumber = require('./func.js');
+import { odd, even } from './var.js';
+import checkNumber from './func.js'; //
 
 function checkStringOddOrEven(str) {
     if (str.length % 2) {
