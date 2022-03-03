@@ -1,10 +1,10 @@
-import { odd, even } from './var';
+const {odd, even}=require('./var');
 
- function checkOddOrEven(num) {
-    if (num % 2) {
+function checkOddOrEven(num){
+    if(num%2){
         return odd;
     }
     return even;
 }
 
-export default checkOddOrEven;
+module.exports=checkOddOrEven;

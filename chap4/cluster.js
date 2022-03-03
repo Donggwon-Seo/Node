@@ -1,7 +1,8 @@
 import cluster from 'cluster';
 import http from 'http';
-import numCPUs from 'os';
+import os from 'os';
 
+const numCPUs=os.cpus().length; //const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
   console.log(`마스터 프로세스 아이디: ${process.pid}`);
   // CPU 개수만큼 워커를 생산
