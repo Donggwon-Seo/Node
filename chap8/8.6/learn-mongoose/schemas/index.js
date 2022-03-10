@@ -4,10 +4,10 @@ const connect = () => {
   if (process.env.NODE_ENV !== 'production') {
     mongoose.set('debug', true);
   }
-  mongoose.connect('mongodb://seodonggwon:seohydus7!@localhost:27017/admin', { // nodejs -> admin 바꿈
-    dbName: 'nodejs',
+  mongoose.connect('mongodb+srv://seodonggwon:seohydus7!@cluster0.4ao5e.mongodb.net/', {
+    dbName: 'myFirstDatabase',
     useNewUrlParser: true,
-  // useCreateIndex: true,
+    useCreateIndex: true,
   }, (error) => {
     if (error) {
       console.log('몽고디비 연결 에러', error);
