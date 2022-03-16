@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app"
   },
-  "author": "Zero Cho",
+  "author": "Donggwon Seo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",

@@ -6,7 +6,9 @@ const { Domain, User } = require('../models');
 
 const router = express.Router();
 
-router.post('/token', async (req, res) => {
+// 클라이언트 비밀키로 도메인이 등록된 것인지를 먼저 확인하고, 등록되어 있지 않다면 에러
+// 메세지를, 등록된 도메인이면 토큰을 발급하고 응답한다.
+router.post('/token', async (req, res) => { 
   const { clientSecret } = req.body;
   try {
     const domain = await Domain.findOne({
@@ -22,12 +24,12 @@ router.post('/token', async (req, res) => {
         message: '등록되지 않은 도메인입니다. 먼저 도메인을 등록하세요',
       });
     }
-    const token = jwt.sign({
-      id: domain.User.id,
-      nick: domain.User.nick,
+    const token = jwt.sign({ 
+      id: domain.User.id,     // 아이디
+      nick: domain.User.nick, // 닉네임
     }, process.env.JWT_SECRET, {
       expiresIn: '1m', // 1분
-      issuer: 'nodebird',
+      issuer: 'nodebird', // 발급자
     });
     return res.json({
       code: 200,

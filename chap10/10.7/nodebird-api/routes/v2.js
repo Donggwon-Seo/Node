@@ -1,14 +1,19 @@
+// nodebird-api/routes/v2.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const url = require('url');
+// const url = require('url');
 
 const { verifyToken, apiLimiter } = require('./middlewares');
 const { Domain, User, Post, Hashtag } = require('../models');
 
 const router = express.Router();
 
-router.use(async (req, res, next) => {
+router.use(cors({
+	credentials: true,
+}));
+
+/*router.use(async (req, res, next) => {
   const domain = await Domain.findOne({
     where: { host: url.parse(req.get('origin')).host },
   });
@@ -20,7 +25,7 @@ router.use(async (req, res, next) => {
   } else {
     next();
   }
-});
+});*/
 
 router.post('/token', apiLimiter, async (req, res) => {
   const { clientSecret } = req.body;

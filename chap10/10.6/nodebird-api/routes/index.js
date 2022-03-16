@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const { User, Domain } = require('../models');
 
 const router = express.Router();
-
+const URL = 'http://localhost:8002/v2'
 router.get('/', async (req, res, next) => {
   try {
     const user = await User.findOne({
